@@ -38,7 +38,7 @@ class Player:
         return player_id
 
     def get_player_update_timestamp(self):
-        return self._latest_update
+        return int(self._latest_update)
 
     @cached(cache=TTLCache(maxsize=2048, ttl=CACHE_TTL))
     def decode_nsig(self, signature):
