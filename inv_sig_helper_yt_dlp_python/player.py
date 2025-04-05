@@ -57,7 +57,7 @@ class Player:
         return decrypted_sig
 
     @cached(cache=TTLCache(maxsize=2048, ttl=CACHE_TTL))
-    def get_signature_timestamp(self, signature):
+    def get_signature_timestamp(self):
         self._update_player_url_if_needed()
 
         timestamp = self._ie._extract_signature_timestamp(const.VIDEO_ID, self._player_url)
