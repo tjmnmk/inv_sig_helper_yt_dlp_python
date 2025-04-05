@@ -111,7 +111,7 @@ class ConnectionHandler:
         # read the encrypted signature
         data = self._recvall(size)
         # decrypt the signature
-        decrypted_signature = self._player.decode_nsig(data)
+        decrypted_signature = self._player.decode_nsig(str(data))
 
         # send the response
         data = struct.pack('!H', len(decrypted_signature))
@@ -136,7 +136,7 @@ class ConnectionHandler:
         # read the encrypted signature
         data = self._recvall(size)
         # decrypt the signature
-        decrypted_signature = self._player.decode_sig(data)
+        decrypted_signature = self._player.decode_sig(str(data))
 
         # send the response
         data = struct.pack('!H', len(decrypted_signature))
