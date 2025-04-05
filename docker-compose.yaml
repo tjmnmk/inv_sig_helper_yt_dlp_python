@@ -10,9 +10,10 @@ services:
     ports:
       - 127.0.0.1:12999:12999
     environment:
+      # Uncomment the following lines to set environment variables
       # - HOST=0.0.0.0
       # - PORT=12999
-      # - LOG_LEVEL=info
+      - LOG_LEVEL=info
     restart: unless-stopped
     cap_drop:
       - ALL
