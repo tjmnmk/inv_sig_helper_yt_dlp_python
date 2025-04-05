@@ -111,7 +111,7 @@ class ConnectionHandler:
         # read the encrypted signature
         data = self._recvall(size)
         # decrypt the signature
-        decrypted_signature = self._player.decode_nsig(str(data))
+        decrypted_signature = self._player.decode_nsig(data.decode('utf-8'))
         # convert to bytes
         decrypted_signature = decrypted_signature.encode('utf-8')
 
@@ -138,7 +138,7 @@ class ConnectionHandler:
         # read the encrypted signature
         data = self._recvall(size)
         # decrypt the signature
-        decrypted_signature = self._player.decode_sig(str(data))
+        decrypted_signature = self._player.decode_sig(data.decode('utf-8'))
         # convert to bytes
         decrypted_signature = decrypted_signature.encode('utf-8')
 
