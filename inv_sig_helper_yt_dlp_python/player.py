@@ -52,7 +52,7 @@ class Player:
     def decode_sig(self, signature):
         self._update_player_url_if_needed()
 
-        decrypted_sig = self._ie._decrypt_sig(signature, const.VIDEO_ID, self._player_url)
+        decrypted_sig = self._ie._decrypt_signature(signature, const.VIDEO_ID, self._player_url)
         logger.debug(f"Decrypted signature: {decrypted_sig} for {signature}")
         return decrypted_sig
 
