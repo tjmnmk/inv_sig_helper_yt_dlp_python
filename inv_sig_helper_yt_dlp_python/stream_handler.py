@@ -6,7 +6,7 @@ from exceptions import StreamBrokenError
 import const
 from logger import logger
 
-NETWORK_LOOP_SLEEP = 0.01
+NETWORK_LOOP_SLEEP = 0.001
 ENDIAN = 'big'
 
 class ConnectionHandler:
@@ -150,13 +150,13 @@ class ConnectionHandler:
     def _recvall(self, size):
         data = b""
         for i in range(int(60 / NETWORK_LOOP_SLEEP) + 1):
-            time.sleep(NETWORK_LOOP_SLEEP)
             chunk = self._socket.recv(size - len(data))
             if not chunk:
                 raise StreamBrokenError("Stream broken.")
             data += chunk
             if len(data) == size:
                 return data
+            time.sleep(NETWORK_LOOP_SLEEP)
         raise StreamBrokenError("Timeout.")
     
 
