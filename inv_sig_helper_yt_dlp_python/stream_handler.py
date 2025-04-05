@@ -39,7 +39,7 @@ class ConnectionHandler:
 
                 logger.debug(f"Received opcode: {opcode} request_id: {request_id}")
 
-                if opcode == const.OPCODE_PLAYER_UPDATE:
+                if opcode == const.OPCODE_FORCE_UPDATE:
                     self._opcode_force_update(opcode, request_id)
                 elif opcode == const.OPCODE_DECRYPT_N_SIGNATURE:
                     self._opcode_decrypt_nsig(opcode, request_id)
