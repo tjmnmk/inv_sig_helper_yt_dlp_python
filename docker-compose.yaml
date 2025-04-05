@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+  inv_sig_helper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      no_cache: true
+    init: true
+    ports:
+      - 127.0.0.1:12999:12999
+    environment:
+      # - HOST=0.0.0.0
+      # - PORT=12999
+      # - LOG_LEVEL=info
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    read_only: false # yt-dlp cache
+    user: 10001:10001
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - invidious_default
+
+networks:
+  invidious_default:
+    external: true
