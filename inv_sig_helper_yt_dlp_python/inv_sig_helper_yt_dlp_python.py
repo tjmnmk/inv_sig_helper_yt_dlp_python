@@ -17,9 +17,9 @@ def handle_client(conn, addr, player):
     
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((Config.get_host(), Config.get_port()))
+    server.bind((Config().get_host(), Config().get_port()))
     server.listen()
-    logger.info(f"[+] Server listening on {Config.get_host()}:{Config.get_port()}")
+    logger.info(f"[+] Server listening on {Config().get_host()}:{Config().get_port()}")
 
     player = Player()
 
