@@ -44,7 +44,12 @@ class Player:
     def decode_nsig(self, signature):
         self._update_player_url_if_needed()
 
-        decrypted_nsig = self._ie._decrypt_nsig(signature, const.VIDEO_ID, self._player_url)
+        try:
+            decrypted_nsig = self._ie._decrypt_nsig(signature, const.VIDEO_ID, self._player_url)
+        except Exception as e:
+            decrypted_nsig = b""
+            logger.error(f"Error decrypting non-signature: {e}")
+            logger.exception(e)
         logger.debug(f"Decrypted non-signature: {decrypted_nsig} for {signature}")
         return decrypted_nsig
     
@@ -52,7 +57,12 @@ class Player:
     def decode_sig(self, signature):
         self._update_player_url_if_needed()
 
-        decrypted_sig = self._ie._decrypt_signature(signature, const.VIDEO_ID, self._player_url)
+        try:
+            decrypted_sig = self._ie._decrypt_signature(signature, const.VIDEO_ID, self._player_url)
+        except Exception as e:
+            decrypted_sig = b""
+            logger.error(f"Error decrypting signature: {e}")
+            logger.exception(e)
         logger.debug(f"Decrypted signature: {decrypted_sig} for {signature}")
         return decrypted_sig
 
