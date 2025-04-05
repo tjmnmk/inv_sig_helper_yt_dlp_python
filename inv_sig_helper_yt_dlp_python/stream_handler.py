@@ -66,7 +66,7 @@ class ConnectionHandler:
             
     def _opcode_force_update(self, opcode, request_id):
         """ just ignore the opcode, we update player when we want to """
-        status = const.OPCODE_PLAYER_UPDATE_NOT_NEED
+        status = const.PLAYER_UPDATE_NOT_NEED
         data = struct.pack('!H', status)
         self._send_response_packet(request_id, data)
 
