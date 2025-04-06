@@ -149,15 +149,12 @@ class ConnectionHandler:
 
     def _recvall(self, size):
         data = b""
-        for i in range(int(60 / NETWORK_LOOP_SLEEP) + 1):
+        while True:
             chunk = self._socket.recv(size - len(data))
             if not chunk:
                 raise StreamBrokenError("Stream broken.")
             data += chunk
             if len(data) == size:
                 return data
-            time.sleep(NETWORK_LOOP_SLEEP)
-        raise StreamBrokenError("Timeout.")
-    
-
-    
+            # we are using a blocking socket, so we should not sleep
+            assert(len(data) < size)
