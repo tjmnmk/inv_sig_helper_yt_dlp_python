@@ -19,11 +19,12 @@ You can add the `docker_rebuild_only_on_yt_dlp_update.sh` script to your system'
 1. Open the crontab editor: `crontab -e`
 2. Add the following line to schedule the script to run every hour (adjust the schedule as needed):
 ```
-0 * * * * cd /path/to/inv_sig_helper_yt_dlp_python/; ./docker_rebuild_only_on_yt_dlp_update.sh`
+0 * * * * user cd /path/to/inv_sig_helper_yt_dlp_python/; ./docker_rebuild_only_on_yt_dlp_update.sh`
 ```
 3. Save and exit the editor.
 
 **Note:** Replace /path/to/inv_sig_helper_yt_dlp_python with the actual path to the project directory on your system.
+**Note** Replace user with the actual user.
 
 This will ensure the service is rebuilt and restarted automatically, keeping all dependencies and the service itself up-to-date.
 
