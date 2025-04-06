@@ -5,7 +5,7 @@
 
 ### Replace default inv_sig_helper
 
-* `docker stop "$(docker ps |grep sig_helper |awk '{print 1$}')"` # and remove the service from `docker-compose.yaml`
+* `docker stop "$(docker ps |grep sig_helper |awk '{print $1}')"` # and remove the service from `docker-compose.yaml`
 * `git clone https://github.com/tjmnmk/inv_sig_helper_yt_dlp_python.git`
 * `cd inv_sig_helper_yt_dlp_python`
 * `./docker_rebuild.sh`
