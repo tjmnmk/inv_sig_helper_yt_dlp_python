@@ -12,12 +12,14 @@
 
 ### Automating Updates with Cron
 
-You can add the docker_rebuild.sh script to your system's cron jobs. This will periodically rebuild and restart the service, ensuring that yt-dlp are kept up-to-date.
+You can add the `docker_rebuild_only_on_yt_dlp_update.sh` script to your system's cron jobs. This script will check if a new version of `yt-dlp` is available on PyPI, and if so, it will rebuild and restart the service to ensure it uses the latest version.
+
+**Note:** This requires `pip` to be installed on the host system.
 
 1. Open the crontab editor: `crontab -e`
-2. Add the following line to schedule the script to run every 6 hours (adjust the schedule as needed):
+2. Add the following line to schedule the script to run every hour (adjust the schedule as needed):
 ```
-0 */6 * * * cd /path/to/inv_sig_helper_yt_dlp_python/; ./docker_rebuild.sh`
+0 * * * * cd /path/to/inv_sig_helper_yt_dlp_python/; ./docker_rebuild_only_on_yt_dlp_update.sh`
 ```
 3. Save and exit the editor.
 
