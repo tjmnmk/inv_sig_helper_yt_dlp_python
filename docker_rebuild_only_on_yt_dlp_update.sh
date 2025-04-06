@@ -22,7 +22,7 @@ if [ ! -w "$YT_DLP_VERSION_FILE" ]; then
     exit 1
 fi
 
-pip_index_yt_dlp=$(pip index versions yt-dlp 2>/dev/null)
+pip_index_yt_dlp=$(pip index versions yt-dlp)
 yt_dlp_version_line=$(echo "$pip_index_yt_dlp" |head -n1)
 echo "yt-dlp version in pip index: $yt_dlp_version_line" >&2
 
