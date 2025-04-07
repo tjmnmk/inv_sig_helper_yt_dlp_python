@@ -17,7 +17,9 @@ def handle_client(conn, addr):
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # set nodelay
-    server.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+    if Config().get_tcp_nodelay():
+        logger.debug("TCP_NODELAY enabled")
+        server.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     # allow reuse of the socket
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind((Config().get_host(), Config().get_port()))
@@ -31,3 +33,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
