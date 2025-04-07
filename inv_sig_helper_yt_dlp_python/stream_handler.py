@@ -5,14 +5,15 @@ import struct
 from exceptions import StreamBrokenError
 import const
 from logger import logger
+from player import Player
 
 NETWORK_LOOP_SLEEP = 0.001
 ENDIAN = 'big'
 
 class ConnectionHandler:
-    def __init__(self, socket, player):
+    def __init__(self, socket):
         self._socket = socket
-        self._player = player
+        self._player = Player()
     
     def _decode_header(self):
         """Request Base
