@@ -1,3 +1,5 @@
+# Use https://github.com/tjmnmk/invidous-watch-yt-dlp instead.
+
 # inv_sig_helper_yt_dlp_python (Python Replacement)
 
 * `inv_sig_helper_yt_dlp_python` is a drop-in replacement for the original Rust-based `inv_sig_helper`. This Python implementation uses `yt-dlp` for decrypting YouTube signatures instead of relying on custom-built decryption code. It provides the same TCP interface for signature decryption and related operations.
